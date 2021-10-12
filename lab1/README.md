@@ -25,8 +25,14 @@ package - é uma fase do ciclo de vida do build. Quando uma fase é declarada, o
     </developers>
 
 Declarar independências no "pom" - 
+<dependency>
+    <groupId>com.squareup.retrofit2</groupId>
+    <artifactId>retrofit</artifactId>
+    <version>2.7.0</version>
+</dependency>
 
-<groupId>com.squareup.retrofit2</groupId>
-      <artifactId>retrofit</artifactId>
+<dependency>  
+      <groupId>com.squareup.retrofit2</groupId>
+      <artifactId>converter-gson</artifactId>
       <version>2.7.0</version>
-
+    </dependency>
