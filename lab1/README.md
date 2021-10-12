@@ -55,4 +55,4 @@ INFO: max temp for today: 27.0
      
 # ---- Exercício 1.3 ---------
 
->>>>>>> 610cf497e58704263251a7d04e6ae995293ac144
+
