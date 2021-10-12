@@ -29,4 +29,6 @@ Declarar independências no "pom" -
 <groupId>com.squareup.retrofit2</groupId>
       <artifactId>retrofit</artifactId>
       <version>2.7.0</version>
+     
+# ---- Exercício 1.3 ---------
 
