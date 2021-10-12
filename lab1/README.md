@@ -35,4 +35,24 @@ Declarar independências no "pom" -
       <groupId>com.squareup.retrofit2</groupId>
       <artifactId>converter-gson</artifactId>
       <version>2.7.0</version>
+<<<<<<< HEAD
     </dependency>
+=======
+      
+
+Após compilar ($ mvn package) e executar ($ mvn exec:java -Dexec.mainClass="com.mycompany.weather.WeatherStarter") o código fornecido a propósito do exercício "MyWeatherRadar"
+o resultado obtido foi o seguinte:
+
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------< com.mycompany.weather:MyWeatherRadar >----------------
+[INFO] Building MyWeatherRadar 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- exec-maven-plugin:3.0.0:java (default-cli) @ MyWeatherRadar ---
+out 12, 2021 8:17:47 DA TARDE com.mycompany.weather.WeatherStarter main
+INFO: max temp for today: 27.0
+     
+# ---- Exercício 1.3 ---------
+
+>>>>>>> 610cf497e58704263251a7d04e6ae995293ac144
