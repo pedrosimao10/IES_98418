@@ -76,5 +76,8 @@ Comando para correr o programa no maven com argumentos: mvn exec:java -Dexec.mai
 
 # ---- Exercício 1.3 ---------
 
+<<<<<<< HEAD
 .gitignore - Ficheiros/Pastas que não devem ser incluídas no repositório
+=======
+>>>>>>> 7a1a885ac5dcf731fd953db9b544f01c3a8f2eb1
 
