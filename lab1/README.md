@@ -76,8 +76,11 @@ Comando para correr o programa no maven com argumentos: mvn exec:java -Dexec.mai
 
 # ---- Exercício 1.3 ---------
 
-<<<<<<< HEAD
 .gitignore - Ficheiros/Pastas que não devem ser incluídas no repositório
-=======
->>>>>>> 7a1a885ac5dcf731fd953db9b544f01c3a8f2eb1
 
+d)
+Fazer "git clone git@github.com:pedrosimao10/IES_98418.git" para a nova location
+
+e)
+- Ficou um pouco confuso mas fiz o pedido nesta alínea no seguinte diretório "IES\IES_98418\lab1\lab1_3\location2\IES_98418\lab1\lab1_2\MyWeatherRadar
+- Criou-se a pasta resources para incluir o ficheiro "log4j2.xml"
