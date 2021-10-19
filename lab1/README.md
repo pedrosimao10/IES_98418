@@ -120,3 +120,9 @@ Status: Downloaded newer image for portainer/portainer-ce:latest
 
 Site acedido : https://localhost:9443 ( NOTA: Não acedi ao :9000 como no guião visto que na instalação do Portainer defini a porta como sendo a 9443
 
+d)
+  
+  Comando para obter a imagem Postgres mais recente: docker pull postgres
+
+
+
