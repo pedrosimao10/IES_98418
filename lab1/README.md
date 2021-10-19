@@ -74,7 +74,9 @@ min temp for today: 16.8
 
 Comando para correr o programa no maven com argumentos: mvn exec:java -Dexec.mainClass="what to put here?" -Dexec.args="arg0 arg1 arg2"~
 
+
 # ---- Exercício 1.3 ---------
+
 
 .gitignore - Ficheiros/Pastas que não devem ser incluídas no repositório
 
@@ -84,3 +86,37 @@ Fazer "git clone git@github.com:pedrosimao10/IES_98418.git" para a nova location
 e)
 - Ficou um pouco confuso mas fiz o pedido nesta alínea no seguinte diretório "IES\IES_98418\lab1\lab1_3\location2\IES_98418\lab1\lab1_2\MyWeatherRadar
 - Criou-se a pasta resources para incluir o ficheiro "log4j2.xml"
+
+
+# --- Exercício 1.4 ---------
+
+b) 
+  O que é um container? Um container é um processo em "sandbox" a executar na minha máquina, isolado de todos os outros procesos na máquina host.
+  
+  O que é uma container image? Ao executar um container, usa-se um sistema de ficheiros isolados. O sistema de ficheiros é providenciado por uma container image. Visto que a image contém o sistema de ficheiros do container, deve conter também tudo o que é necessário para excutar a aplicação (dependências, configuração, scripts,etc.) 
+
+Comandos importantes do docker:
+	-d : executa o container em segundo plano
+	-p 80:80 : associa a porta 80 do host à porta 80 do container
+	docker/getting-image : imagem a usar
+
+  Dockerfile : Um script de instruções a usar para criar uma container image
+
+c)
+ Arquitetura Portainer: Portainer consistem em dois elementos: o Portainer Server e o Portainer Agent. Ambos são executados como containers leves num container já criado. O Portainer Agent deve ser enviado para todos os nós do cluster e configurado de forma a reportar para o container do Portainer Server.
+
+ Volume a ser usado pelo Portainer Serber para guardar a sua base de dados : docker volume create portainer_data
+
+ Download e instalação do container do Portainer Server: docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+
+ Instalação do Portainer: 
+latest: Pulling from portainer/portainer-ce
+7721cab3d696: Pull complete
+0645e7e2a110: Pull complete
+6329543ecfce: Pull complete
+Digest: sha256:76ff22486bcd3713631b5f317efcb69e707a122fe96ffcc0589cf2d3e8e6b890
+Status: Downloaded newer image for portainer/portainer-ce:latest
+1f7dacecc760818f9a67137d815dff6c9dbc18680e2eff6aff9b48337f74ca37
+
+Site acedido : https://localhost:9443 ( NOTA: Não acedi ao :9000 como no guião visto que na instalação do Portainer defini a porta como sendo a 9443
+
