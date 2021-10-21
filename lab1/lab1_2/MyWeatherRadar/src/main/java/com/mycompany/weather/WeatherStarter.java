@@ -12,7 +12,7 @@ import java.lang.StringBuilder;
  * demonstrates the use of the IPMA API for weather forecast
  */
 public class WeatherStarter {
-    private static int cityCode = 1010500;
+    private static int city_id = 1010500;
     //private static final int CITY_ID_AVEIRO = 1010500;
     /*
     loggers provide a better alternative to System.out.println
@@ -24,7 +24,7 @@ public class WeatherStarter {
 
         if (args.length > 0){
             try {
-                cityCode = Integer.parseInt(args[0]);
+                city_id = Integer.parseInt(args[0]);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -39,7 +39,7 @@ public class WeatherStarter {
                 .build();
 
         IpmaService service = retrofit.create(IpmaService.class);
-        Call<IpmaCityForecast> callSync = service.getForecastForACity(cityCode);
+        Call<IpmaCityForecast> callSync = service.getForecastForACity(city_id);
 
         try {
             Response<IpmaCityForecast> apiResponse = callSync.execute();
