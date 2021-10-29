@@ -34,4 +34,20 @@ Caso o user não exista o error é triggered e é imprimida uma mensagem a dizer
 
 # ---- Exercício 2.2 --------
 
+O Jetty pode ser executado no modo "embedded". Isto significa que não é necessário construir um ficheiro WAR e lançá-lo no servidor Jetty "solitário". 
 
+# ---- Exercício 2.3 --------
+NOTA: Caso volte a ter problemas com o wrapper do Maven fazer: mvn -N io.takari:maven:0.7.7:wrapper
+
+a)
+
+Para correr : ./mvnw spring-boot:run
+O servidor vai correr no localhost na porta 8080
+
+Resultado de aceder a http://localhost:8080/ após corer o Spring Boot:
+
+Whitelabel Error Page
+
+This application has no explicit mapping for /error, so you are seeing this as a fallback.
+Fri Oct 29 21:58:40 WEST 2021
+There was an unexpected error (type=Not Found, status=404).
