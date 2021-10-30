@@ -39,7 +39,7 @@ O Jetty pode ser executado no modo "embedded". Isto significa que não é necess
 # ---- Exercício 2.3 --------
 NOTA: Caso volte a ter problemas com o wrapper do Maven fazer: mvn -N io.takari:maven:0.7.7:wrapper
 
-a)
+a)---------------------------------------------------------------------------
 
 Foi gerado o ficheiro DemoApplication.java
 Para correr : ./mvnw spring-boot:run
@@ -53,7 +53,7 @@ This application has no explicit mapping for /error, so you are seeing this as a
 Fri Oct 29 21:58:40 WEST 2021
 There was an unexpected error (type=Not Found, status=404).
 
-b)
+b)--------------------------------------------------------------------------------
 
 A alínea b) foi resolvida na mesma pasta que a alínea a), de modo a aproveitar o projeto maven criado na alínea anterior.
 Com isto, todas as dependências necessárias para a realização da alínea b) foram adicionadas ao ficheiro "pom.xml". (Spring Web, Thymeleaf e Spring Boot DevTools).
@@ -94,3 +94,49 @@ Após correr a aplicação com ./mvnw spring-boot:run (ou correndo o programa pr
 Caso se adicione um parâmetro "name" ao site (http://localhost:9000/greeting?name=User) a mensagem "Hello,World!" muda para "Hello,User!". Isto comprova que o @RequestParam está a funcionar corretamente.
 
 Por fim, foi adicionada o ficheiro index.html (src/main/resources/static) que, quando o programa principal é corrido e acede-se ao site http://localhost:9000, aparece a mensagem "Get your greeting here", e ao clicar no "here" aparece novamente a mensagem "Hello, World!" ou "Hello, <parâmetro nome>!"
+
+c)----------------------------------------------------------------------------------
+
+Criou-se o ficheiro "Greeting.java" de modo a modelar a representação da apresentação (greeting).
+
+Criou-se o ficheiro "RestGreetingController.java", parecido ao controlador da alínea anterior com a diferença do @RestController
+
+@RestController - Marca a classe como um controlador onde cada método retorna um objeto de domínio em vez de uma visualização. É uma forma abreviada de incluir @Controller e @ResponseBody. 
+
+De modo a realizar a alínea comentei a parte referente à alínea anterior do ficheiro "GreetingController.java" e escrevi o código referente a esta alínea.
+Após executar o comando "curl -v http://localhost:9000/greeting", o resultado obtido foi o seguinte:
+
+*   Trying 127.0.0.1:9000...
+* Connected to localhost (127.0.0.1) port 9000 (#0)
+> GET /greeting HTTP/1.1
+> Host: localhost:9000
+> User-Agent: curl/7.79.1
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Sat, 30 Oct 2021 21:32:36 GMT
+< 
+* Connection #0 to host localhost left intact
+{"id":1,"content":"Hello, World!"}
+
+Executando o comando "curl -v http://localhost:9000/greeting?name=Pedro", o resultado obtido foi o seguinte:
+
+*   Trying 127.0.0.1:9000...
+* Connected to localhost (127.0.0.1) port 9000 (#0)
+> GET /greeting?name=Pedro HTTP/1.1
+> Host: localhost:9000
+> User-Agent: curl/7.79.1
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Date: Sat, 30 Oct 2021 21:38:53 GMT
+< 
+* Connection #0 to host localhost left intact
+{"id":2,"content":"Hello, Pedro!"}            Em vez de "World" aparece o nome que passei no parâmetro "name"
+
