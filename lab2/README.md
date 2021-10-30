@@ -41,6 +41,7 @@ NOTA: Caso volte a ter problemas com o wrapper do Maven fazer: mvn -N io.takari:
 
 a)
 
+Foi gerado o ficheiro DemoApplication.java
 Para correr : ./mvnw spring-boot:run
 O servidor vai correr no localhost na porta 8080
 
@@ -51,3 +52,45 @@ Whitelabel Error Page
 This application has no explicit mapping for /error, so you are seeing this as a fallback.
 Fri Oct 29 21:58:40 WEST 2021
 There was an unexpected error (type=Not Found, status=404).
+
+b)
+
+A alínea b) foi resolvida na mesma pasta que a alínea a), de modo a aproveitar o projeto maven criado na alínea anterior.
+Com isto, todas as dependências necessárias para a realização da alínea b) foram adicionadas ao ficheiro "pom.xml". (Spring Web, Thymeleaf e Spring Boot DevTools).
+
+@Controller - Responsável por lidar com os pedidos HTTP.
+View - Responsável por renderizar o conteúdo do HTML.
+@GetMapping - Certifica-se que os pedidos HTTP GET são direcionados para o método greeting().
+@RequestParam - vincula o valor do nome do parâmetro da string de consulta ao parâmetro name do método greeting ().
+Thymeleaf - Analisa o modelo greeting.html e avalia a expressão th:text para renderizar o valor do parâmetro ${name} que foi definido no controlador.
+
+- Adicionar greeting.html à pasta lab2_3/src/main/resources/templates!
+
+Spring Boot Devtools:
+
+     - Alterna os mecanismos de modelo para desativar o cache.
+
+     - Habilita LiveReload para atualizar automaticamente o navegador.
+
+     - Outros padrões razoáveis com base no desenvolvimento em vez da produção. 
+     
+@SpringBootApplication é uma anotação de conveniência que adiciona o seguinte:
+
+     - @Configuration: marca a classe como uma fonte de definições de bean para o contexto da aplicação.
+
+     @EnableAutoConfiguration: Diz ao Spring Boot para começar a adicionar beans com base nas configurações do classpath, outros beans e várias configurações de propriedade. Por exemplo, se spring-webmvc estiver no caminho da classe, esta anotação sinaliza a aplicação como uma aplicação web e ativa comportamentos-chave, por exemplo,  como configurar um DispatcherServlet.
+
+     @ComponentScan: Diz ao Spring para procurar outros componentes, configurações e serviços no pacote com/example, permitindo que ele encontre os controladores.
+     
+O método main () usa o método SpringApplication.run () do Spring Boot para iniciar uma aplicação.
+
+Mudou-se a porta a usar de modo a não entrar em conflito com a porta usada na alínea anterior. Para tal, editou-se o ficheiro application.properties (src/main/resources):
+server.port = 9000
+
+A aplicação web que estamos a contruir é 100% Java, não requer nenhum ficheiro do tipo .xml
+
+Após correr a aplicação com ./mvnw spring-boot:run (ou correndo o programa principal em qualquer IDE), acedeu-se ao site: http://localhost:9000/greeting onde foi apresentada uma página em branco e com a mensagem "Hello, World!"
+
+Caso se adicione um parâmetro "name" ao site (http://localhost:9000/greeting?name=User) a mensagem "Hello,World!" muda para "Hello,User!". Isto comprova que o @RequestParam está a funcionar corretamente.
+
+Por fim, foi adicionada o ficheiro index.html (src/main/resources/static) que, quando o programa principal é corrido e acede-se ao site http://localhost:9000, aparece a mensagem "Get your greeting here", e ao clicar no "here" aparece novamente a mensagem "Hello, World!" ou "Hello, <parâmetro nome>!"
