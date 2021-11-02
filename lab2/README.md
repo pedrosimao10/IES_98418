@@ -140,3 +140,61 @@ Executando o comando "curl -v http://localhost:9000/greeting?name=Pedro", o resu
 * Connection #0 to host localhost left intact
 {"id":2,"content":"Hello, Pedro!"}            Em vez de "World" aparece o nome que passei no parâmetro "name"
 
+# ---- Exercício 2.4 --------
+
+Neste exercício a minha abordagem foi tentar resolver de maneira semelhante à alínea anterior. 
+Para isso, criei primeiro o ficheiro "shows.json", que é composto por um array que contém o id, nome, código e quote de séries famosas.
+De seguida criei a classe representativa "Quotes.java" que recebe como argumentos o id,nome, código e quote, assim como os seus contrutores e métodos get.
+Depois criei um controlador, "QuotesController.java" de forma a lidar com os GET requests de acordo com o url especificado:
+	- /api/quotes - retorna uma quote aleatória de uma série aleatória
+	- api/quotes?show=<show_id> - retorna uma quote aleatória de uma série específica
+	- api/shows - lista de todas as séries que existem
+De forma a ler o conteúdo do ficheiro JSON utilizei o Jackson, que é uma escolha popular para processar data JSON em Java e adicionei a dependência ao ficheiro pom.
+
+# ---- Review Questions -------
+A. What are the responsibilities/services of a “servlet container”?
+
+1. Ler os dados explícitos enviados pelos clientes. Isso inclui um formulário HTML numa página Web ou também pode vir de um miniaplicativo ou programa cliente HTTP personalizado.
+
+2. Ler os dados de solicitação HTTP implícitos enviados pelos clientes. Por exemplo cookies ou tipo de media.
+
+3. Enviar os dados explícitos (ou seja, o documento) para os clientes. Este documento pode ser enviado em vários formatos, incluindo texto (HTML ou XML), binário (imagens GIF) ou Excel.
+
+4. Processar os dados e gerar os resultados. Esse processo pode exigir a comunicação com uma base de dadados, a execução de uma chamada RMI ou CORBA, a invocação de um serviço Web ou o cálculo direto da resposta.
+
+5. Enviar a resposta HTTP implícita aos clientes. Ou seja informar os clientes que tipo de documento está a ser retornado (por exemplo, HTML), definir cookies e parâmetros de cache e outras tarefas semelhantes. 
+
+B. Explain, in brief, the “dynamics” of Model-View-Controller approach used in Spring Boot to serve web content. (You may exemplify with the context of the previous exercises.)
+
+Mesmo tendo sido desenvolvida inicialmente para computação pessoal, o MVC foi drasticamente adaptado como uma arquitetura para as aplicações web em todas as maiores linguagens de programação. Muitos frameworks de aplicação comerciais e não comerciais foram desenvolvidos tendo como base esse modelo. Tais frameworks variam em suas interpretações, principalmente no modo que as responsabilidades MVC são separadas entre o cliente e servidor. Um caso prático é uma aplicação web em que a visão é um documento HTML (ou derivado) gerado pela aplicação. O controlador recebe uma entrada GET ou POST após um estímulo do utilizador e decide como processá-la, invocando objetos do domínio para tratar a lógica de negócio, e por fim invocando uma visão para apresentar a saída.
+
+C. Inspect the POM.xml for the previous Spring Boot projects. What is the role of the “starters” dependencies?
+
+As dependências iniciais permitem simplificar a construção do sistema, padronizando alguns aspectos do mesmo. 
+
+D. Which annotations are transitively included in the @SpringBootApplication?
+
+@SpringBootApplication é uma anotação de conveniência que adiciona o seguinte:
+
+     - @Configuration: marca a classe como uma fonte de definições de bean para o contexto da aplicação.
+
+     @EnableAutoConfiguration: Diz ao Spring Boot para começar a adicionar beans com base nas configurações do classpath, outros beans e várias configurações de propriedade. Por exemplo, se spring-webmvc estiver no caminho da classe, esta anotação sinaliza a aplicação como uma aplicação web e ativa comportamentos-chave, por exemplo,  como configurar um DispatcherServlet.
+
+     @ComponentScan: Diz ao Spring para procurar outros componentes, configurações e serviços no pacote com/example, permitindo que ele encontre os controladores.
+     
+E. Search online for the topic “Best practices for REST API design”. From what you could learn, select your “top 5” practices, and briefly explain them in you own words.
+
+1. Aceitar e responder com JSON
+JSON é uma linguagem conhecida e uma das mais usadas, para além das inúmeras vantagens que possui: fácil de aprender, ler e perceber, e é compacto (é dois terços do tamanho da mesma data em XML)
+
+2. Handle errors gracefully and return standard error codes
+É conveniente para o endpoint da API retornar detalhes do erro no JSON ou no corpo da resposta para ajudar o utilizador com o debugging.
+
+3. Versioning our APIs
+A API precisa seguir medidas de segurança proativas para executar operações enquanto protege dados confidenciais sem problemas. É importante ter várias versões diferentes da API caso estejamos a fazer mudanças.
+
+4. Cache data to improve performance
+Podemos adicionar cache para retornar dados de cache de memória local em vez de consultar a base de dados para obter os dados sempre que quisermos recuperar alguns dados solicitados pelos utilizadores. A vantagem do armazenamento em cache é que os usuários podem obter dados mais rapidamente.
+
+5. Nesting resources for hierarchical objects
+Os objetivos dos recursos contêm sempre algum tipo de hierarquia funcional ou estão interligados. No entanto, ainda é ideal limitar o aninhamento na REST API, pois complica muito a distribuição do trabalho por meio dos mapeamentos. 

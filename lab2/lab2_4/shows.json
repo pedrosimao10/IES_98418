@@ -1,0 +1,62 @@
+[{
+    "id": 0,
+    "name": "Game of Thrones", 
+    "code": "got",
+    "quote": "I drink and I know things"
+ },
+ {
+    "id": 1,
+    "name": "Lúcifer",
+    "code": "luci",
+    "quote": "What do you desire?"
+ },
+ {
+    "id": 2,
+    "name": "La Casa de Papel",
+    "code": "lcp",
+    "quote": "Que empieze el matriarcado"
+ },
+ {
+    "id": 3,
+    "name": "Lord of The Rings",
+    "code": "lotr",
+    "quote": "One ring to rule them all"
+ },
+ {
+    "id": 4,
+    "name": "You",
+    "code": "you",
+    "quote": "I did it for you"
+ },
+ {
+    "id": 5,
+    "name": "Squid Game",
+    "code": "sg",
+    "quote":  "게임하고 싶니? "
+ },
+ {
+    "id": 6,
+    "name": "Narcos",
+    "code": "nar",
+    "quote": "Yo soy Pablo Emilio Escobar Gaviria"
+ },
+ {
+    "id": 7,
+    "name": "Loki",
+    "code": "loki",
+    "quote": "God of Mischief"
+ },
+ {
+    "id": 8,
+    "name": "Drive to Survive",
+    "code": "dts",
+    "quote": "Max Max Super Max"
+ },
+ {
+    "id": 9,
+    "name": "Peaky Blinders",
+    "code": "pb",
+    "quote": "By the order of the Peaky Blinders"
+ }
+
+]
