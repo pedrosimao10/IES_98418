@@ -142,7 +142,9 @@ Executando o comando "curl -v http://localhost:9000/greeting?name=Pedro", o resu
 
 # ---- Exercício 2.4 --------
 
-Neste exercício a minha abordagem foi tentar resolver de maneira semelhante à alínea anterior. 
+Neste exercício a minha abordagem foi tentar resolver de maneira semelhante à alínea anterior.
+
+/* Primeira resolução que tentei fazer
 Para isso, criei primeiro o ficheiro "shows.json", que é composto por um array que contém o id, nome, código e quote de séries famosas.
 De seguida criei a classe representativa "Quotes.java" que recebe como argumentos o id,nome, código e quote, assim como os seus contrutores e métodos get.
 Depois criei um controlador, "QuotesController.java" de forma a lidar com os GET requests de acordo com o url especificado:
@@ -150,6 +152,40 @@ Depois criei um controlador, "QuotesController.java" de forma a lidar com os GET
 	- api/quotes?show=<show_id> - retorna uma quote aleatória de uma série específica
 	- api/shows - lista de todas as séries que existem
 De forma a ler o conteúdo do ficheiro JSON utilizei o Jackson, que é uma escolha popular para processar data JSON em Java e adicionei a dependência ao ficheiro pom.
+/*
+
+Nova Resolução:
+Criei a classe representativa "Quotes.java" que recebe como argumentos o id, show e quote, assim como os seus contrutores e métodos get.
+Depois criei um controlador, "QuotesController.java" de forma a lidar com os GET requests de acordo com o url especificado:
+	- /api/quotes - retorna uma quote aleatória de uma série aleatória
+	- api/quotes?show=<show_id> - retorna uma quote aleatória de uma série específica
+	- api/shows - lista de todas as séries que existem
+Criei um ArrayList para cada série e suas respetivas quotes e um HashMap "quotes" para guardar essas informações.
+Usei o Random para retornar uma quote aleatória
+Resultados obtidos:
+	Para http://localhost:8080/api/quote:
+	{"id":3,"show":"Drive to Survive","quote":"Max Max Super Max"}
+	id: 3
+	show: "Drive to Survive"
+	quote: "Max Max Super Max"
+	
+	Ao atualizar a página:
+	{"id":0,"show":"Game of Thrones","quote":"You know nothing Jon Snow"}
+	id: 0
+	show: "Game of Thrones"
+	quote: "You know nothing Jon Snow"
+	
+	Para http://localhost:8080/api/quote?show=1:
+	id: 1
+	show: "Lúcifer"
+	quote: "Detective!"
+	
+	Para http://localhost:8080/api/shows:
+	["Game of Thrones","Lúcifer","You","Drive to Survive"]
+	0: "Game of Thrones"
+	1: "Lúcifer"
+	2: "You"
+	3: "Drive to Survive"
 
 # ---- Review Questions -------
 A. What are the responsibilities/services of a “servlet container”?
@@ -166,8 +202,12 @@ A. What are the responsibilities/services of a “servlet container”?
 
 B. Explain, in brief, the “dynamics” of Model-View-Controller approach used in Spring Boot to serve web content. (You may exemplify with the context of the previous exercises.)
 
-Mesmo tendo sido desenvolvida inicialmente para computação pessoal, o MVC foi drasticamente adaptado como uma arquitetura para as aplicações web em todas as maiores linguagens de programação. Muitos frameworks de aplicação comerciais e não comerciais foram desenvolvidos tendo como base esse modelo. Tais frameworks variam em suas interpretações, principalmente no modo que as responsabilidades MVC são separadas entre o cliente e servidor. Um caso prático é uma aplicação web em que a visão é um documento HTML (ou derivado) gerado pela aplicação. O controlador recebe uma entrada GET ou POST após um estímulo do utilizador e decide como processá-la, invocando objetos do domínio para tratar a lógica de negócio, e por fim invocando uma visão para apresentar a saída.
+O Spring usa MVC (Model, View, Controller) para servir o conteúdo da web:
 
+     - O modelo é a camada lógica da aplicação. O framework Spring possui o org.springframework.ui.Model que permite mapear atributos para serem posteriormente renderizados nas visualizações.
+     - A visualização é a camada "front-end" e geralmente é armazenada na pasta de modelos de um projeto Spring
+     - O controlador aceita inputs e converte-os em comandos para o modelo ou vista. Spring tem uma anotação especial para designar uma classe como um Controlador.
+      
 C. Inspect the POM.xml for the previous Spring Boot projects. What is the role of the “starters” dependencies?
 
 As dependências iniciais permitem simplificar a construção do sistema, padronizando alguns aspectos do mesmo. 
