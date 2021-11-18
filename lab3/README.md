@@ -116,3 +116,24 @@ De seguida foi só basear na função que já existia para procurar por Id e ada
     }
     
 O resultado encontra-se também em formato de imagem na pasta previamente descrita (SPOILER: alínea resolvida com sucesso)
+
+# ---- Exercício 3.3 --------
+Neste exercício adaptei os exercícios da alínea 3.2 com os da alínea 2.4 do lab passado.
+
+De notar que criou-se os ficheiros movies.txt e quotes.txt com filmes e quotes já pré-carregadas, de forma a ser possível carregadas na app (através do api/addmovie e api/addquotes)
+
+Para usar o Docker Container criou-se o ficheiro Dockerfile e docker-compose.yml e executou-se o seguinte comando : sudo docker-container up
+
+# Review Questions
+
+# A) Explain the differences between the RestController and Controller components used in different
+	Enquanto que o @Controller corresponde aos controladores MVC, o @RestController é uma combinação do @Controller e da anotação @ResponseBody.
+	O @Controller cria um Map of Model Object e procura uma view, por outro lado, o @RestController retorna dados de objetos e objetos gravados diretamente na resposta HTTP (JSON, XML...).
+
+# C) Explain the annotations @Table, @Colum, @Id found in the Employee entity.
+	@Table - Cria a tabela na base de dados da aplicação;
+	@Id - A variável transforma-se na coluna id da tabela da base de dados. É incrementado automaticamente;
+	@Columm - Permite que a variável se torne numa coluna na tabela da base de dados.
+	
+# D) Explain the use of the annotation @AutoWired (in the Rest Controller class).
+	O @AutoWired foi usado na classe do Rest Controller visto que permite injetar a dependência do objeto implicitamente.
